@@ -50,24 +50,75 @@ document.addEventListener('DOMContentLoaded', () => {
     // Storage Key (v2 = fresh start, all seats empty)
     const STORAGE_KEY = 'smart_communication_seats_v2';
 
-    // Helper to get bookings list (starts empty — all 31 seats available)
+    // Google Sheets Apps Script Web App URL (Paste your URL here once deployed)
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxg9pvwtJbN4pfV4jdZTBFXHd1e9OQbC3IxfDTkXFNw6SZlVs_VBT7IWuMxXrcNINo5/exec';
+    
+    let cachedBookings = [];
+
+    // Helper to fetch latest bookings from Google Sheet (falls back to localStorage if URL is not configured)
+    async function fetchLatestBookings() {
+        if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+            const data = localStorage.getItem(STORAGE_KEY);
+            cachedBookings = data ? JSON.parse(data) : [];
+            return;
+        }
+        try {
+            const response = await fetch(`${SCRIPT_URL}?action=get`);
+            const resJson = await response.json();
+            if (resJson.status === 'success') {
+                cachedBookings = resJson.data;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(cachedBookings));
+            }
+        } catch (err) {
+            console.error('Failed to fetch bookings from Google Sheets:', err);
+            const data = localStorage.getItem(STORAGE_KEY);
+            cachedBookings = data ? JSON.parse(data) : [];
+        }
+    }
+
+    // Helper to get bookings list (returns cached list synchronously)
     window.getBookings = function() {
-        const data = localStorage.getItem(STORAGE_KEY);
-        return data ? JSON.parse(data) : [];
+        return cachedBookings;
     };
 
-    // Helper to save a booking
-    window.saveBooking = function(booking) {
+    // Helper to save a booking (async updates backend Google Sheet)
+    window.saveBooking = async function(booking) {
         const bookings = window.getBookings();
-        // Remove old booking for this person if exists
         const filtered = bookings.filter(b => b.name !== booking.name);
         filtered.push(booking);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+        cachedBookings = filtered;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cachedBookings));
+        
         if (typeof window.updateSeatDisplay === 'function') {
             window.updateSeatDisplay();
         }
         if (typeof window.renderAdminBookingsList === 'function') {
             window.renderAdminBookingsList();
+        }
+        
+        if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+            try {
+                const queryParams = new URLSearchParams({
+                    action: 'save',
+                    name: booking.name,
+                    email: booking.email,
+                    company: booking.company,
+                    seatId: booking.seatId,
+                    serial: booking.serial
+                });
+                const response = await fetch(`${SCRIPT_URL}?${queryParams.toString()}`);
+                const resJson = await response.json();
+                if (resJson.status !== 'success') {
+                    console.error('Failed to save to Google Sheets:', resJson.message);
+                    alert(`เกิดข้อผิดพลาดในการบันทึกที่นั่ง: ${resJson.message}`);
+                } else {
+                    await fetchLatestBookings();
+                    window.renderSeatingGrid();
+                    window.updateSeatDisplay();
+                }
+            } catch (err) {
+                console.error('Network error saving booking:', err);
+            }
         }
     };
 
@@ -251,12 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nameSelect && typeof ATTENDEE_LIST !== 'undefined') {
         nameSelect.addEventListener('change', () => {
             const selectedName = nameSelect.value;
-            const attendee = ATTENDEE_LIST.find(a => a.name === selectedName) || ADMIN_LIST.find(a => a.name === selectedName);
             
-            const adminPanel = document.getElementById('adminControlPanel');
-            const resetCurrentBtn = document.getElementById('adminResetCurrentUserBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            const viewTicketBtn = document.getElementById('viewTicketBtn');
+            // Fetch latest bookings in background when name is changed
+            fetchLatestBookings().then(() => {
+                window.renderSeatingGrid();
+                window.updateSeatDisplay();
+                
+                const attendee = ATTENDEE_LIST.find(a => a.name === selectedName) || ADMIN_LIST.find(a => a.name === selectedName);
+                
+                const adminPanel = document.getElementById('adminControlPanel');
+                const resetCurrentBtn = document.getElementById('adminResetCurrentUserBtn');
+                const submitBtn = document.getElementById('submitBtn');
+                const viewTicketBtn = document.getElementById('viewTicketBtn');
             
             if (attendee) {
                 emailInput.value = attendee.email;
@@ -301,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (adminPanel && !adminLoggedIn) adminPanel.style.display = 'none';
             }
             window.renderSeatingGrid();
+            });
         });
     }
 
@@ -315,7 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const bookings = window.getBookings();
             const filtered = bookings.filter(b => b.name !== selectedName);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+            cachedBookings = filtered;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cachedBookings));
             
             selectedSeatInput.value = '';
             adminResetCurrentBtn.disabled = true;
@@ -332,12 +391,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof window.renderAdminBookingsList === 'function') {
                 window.renderAdminBookingsList();
             }
+
+            if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+                fetch(`${SCRIPT_URL}?action=delete&name=${encodeURIComponent(selectedName)}`)
+                    .then(res => res.json())
+                    .then(resJson => {
+                        if (resJson.status === 'success') {
+                            fetchLatestBookings().then(() => {
+                                window.renderSeatingGrid();
+                                window.updateSeatDisplay();
+                            });
+                        }
+                    })
+                    .catch(err => console.error('Error deleting booking:', err));
+            }
         });
     }
 
     if (adminResetAllBtn) {
         adminResetAllBtn.addEventListener('click', () => {
             if (confirm('คุณต้องการล้างข้อมูลแผนผังที่นั่งทั้งหมดใช่หรือไม่? ข้อมูลผู้เข้าร่วมงานที่จองไว้จะถูกลบทั้งหมด!')) {
+                cachedBookings = [];
                 localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
                 
                 selectedSeatInput.value = '';
@@ -354,6 +428,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.updateSeatDisplay();
                 if (typeof window.renderAdminBookingsList === 'function') {
                     window.renderAdminBookingsList();
+                }
+
+                if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+                    fetch(`${SCRIPT_URL}?action=clearAll`)
+                        .then(res => res.json())
+                        .then(resJson => {
+                            if (resJson.status === 'success') {
+                                fetchLatestBookings().then(() => {
+                                    window.renderSeatingGrid();
+                                    window.updateSeatDisplay();
+                                });
+                            }
+                        })
+                        .catch(err => console.error('Error clearing bookings:', err));
                 }
             }
         });
@@ -591,108 +679,128 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const chosenSeatId = selectedSeatInput.value;
         if (!chosenSeatId) {
-            alert('กรุณาคลิกเลือกที่นั่งที่ว่าง (เส้นประ) บนผังผังด้านซ้ายก่อนตรวจสอบสิทธิ์');
+            alert('กรุณาคลิกเลือกที่นั่งที่ว่าง (เส้นประ) บนแผนผังด้านขวาก่อนตรวจสอบสิทธิ์');
             return;
         }
-        
-        // Start Scanning/Allocating
-        scanPhase.style.display = 'flex';
-        ticketPhase.style.display = 'none';
-        successOverlay.classList.add('active');
-        
-        let progress = 0;
-        scanProgressFill.style.width = '0%';
-        scanPercent.textContent = '0%';
-        
-        // Flash seats randomly in background to look like a high-tech selector
-        const allSeats = document.querySelectorAll('.seat-node');
-        const flashInterval = setInterval(() => {
-            allSeats.forEach(s => s.classList.remove('active-user-seat'));
-            const randomSeat = allSeats[Math.floor(Math.random() * allSeats.length)];
-            if (randomSeat) randomSeat.classList.add('active-user-seat');
-        }, 100);
-        
-        const progressInterval = setInterval(() => {
-            progress += 4;
-            if (progress > 100) progress = 100;
+
+        const runSubmit = () => {
+            // Start Scanning/Allocating
+            scanPhase.style.display = 'flex';
+            ticketPhase.style.display = 'none';
+            successOverlay.classList.add('active');
             
-            scanProgressFill.style.width = `${progress}%`;
-            scanPercent.textContent = `${progress}%`;
+            let progress = 0;
+            scanProgressFill.style.width = '0%';
+            scanPercent.textContent = '0%';
             
-            if (progress >= 100) {
-                clearInterval(progressInterval);
-                clearInterval(flashInterval);
+            // Flash seats randomly in background to look like a high-tech selector
+            const allSeats = document.querySelectorAll('.seat-node');
+            const flashInterval = setInterval(() => {
+                allSeats.forEach(s => s.classList.remove('active-user-seat'));
+                const randomSeat = allSeats[Math.floor(Math.random() * allSeats.length)];
+                if (randomSeat) randomSeat.classList.add('active-user-seat');
+            }, 100);
+            
+            const progressInterval = setInterval(() => {
+                progress += 4;
+                if (progress > 100) progress = 100;
                 
-                // Save this booking to localStorage
-                const bookings = window.getBookings();
-                let existingBooking = bookings.find(b => b.name === selectedName);
-                let finalSerial;
+                scanProgressFill.style.width = `${progress}%`;
+                scanPercent.textContent = `${progress}%`;
                 
-                if (existingBooking) {
-                    finalSerial = existingBooking.serial;
-                    // If they somehow selected a different seat, update it
-                    existingBooking.seatId = chosenSeatId;
-                    window.saveBooking(existingBooking);
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    clearInterval(flashInterval);
+                    
+                    // Save this booking to localStorage
+                    const bookings = window.getBookings();
+                    let existingBooking = bookings.find(b => b.name === selectedName);
+                    let finalSerial;
+                    
+                    if (existingBooking) {
+                        finalSerial = existingBooking.serial;
+                        // If they somehow selected a different seat, update it
+                        existingBooking.seatId = chosenSeatId;
+                        window.saveBooking(existingBooking);
+                    } else {
+                        finalSerial = `SC2026-${Math.floor(1000 + Math.random() * 9000)}`;
+                        const newBooking = {
+                            name: attendee.name,
+                            email: attendee.email,
+                            company: attendee.company,
+                            seatId: chosenSeatId,
+                            serial: finalSerial
+                        };
+                        window.saveBooking(newBooking);
+                    }
+
+                    // --- Send confirmation email via EmailJS ---
+                    if (typeof emailjs !== 'undefined') {
+                        emailjs.send('service_smartcomm', 'template_seat_confirm', {
+                            to_email: attendee.email,
+                            attendee_name: attendee.name,
+                            seat_id: chosenSeatId,
+                            company: attendee.company,
+                            serial: finalSerial,
+                            event_date: '10-11 มิถุนายน 2569',
+                            venue: 'BAFS Grand Hall'
+                        }).then(() => {
+                            console.log('✅ Email sent to:', attendee.email);
+                        }).catch((err) => {
+                            console.warn('⚠️ EmailJS send failed:', err);
+                        });
+                    }
+                    
+                    // Re-render seating grid to permanently register this seat and disable it for others
+                    window.renderSeatingGrid();
+                    
+                    // Update Ticket fields
+                    ticketAttendeeName.textContent = attendee.name;
+                    ticketSeatNumber.textContent = chosenSeatId;
+                    ticketAttendeeEmail.textContent = attendee.email;
+                    ticketAttendeeCompany.textContent = attendee.company;
+                    ticketSerial.textContent = finalSerial;
+                    
+                    // Update PI study button state
+                    updatePiStudyButton(attendee);
+                    
+                    const dispatchText = document.getElementById('dispatchText');
+                    if (dispatchText) {
+                        dispatchText.innerHTML = `ระบบได้ส่งข้อมูลบัตรสิทธิ์ที่นั่งอย่างเป็นทางการไปยังอีเมล <strong style="color: var(--theme-primary); text-decoration: underline;">${attendee.email}</strong> เรียบร้อยแล้ว!`;
+                    }
+
+                    // Transition to Ticket view
+                    scanPhase.style.display = 'none';
+                    ticketPhase.style.display = 'flex';
+                    
+                    // Find node on the map representing user's seat to launch animation
+                    const finalSeatNode = Array.from(allSeats).find(s => s.getAttribute('data-seat-id') === chosenSeatId);
+                    
+                    // Trigger digital paper plane / email flight animation!
+                    triggerEmailFlightAnimation(finalSeatNode, attendee.email);
+                }
+            }, 100);
+        };
+
+        // Server-side check before booking
+        if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL') && !isAdminOrTester(selectedName)) {
+            fetchLatestBookings().then(() => {
+                const taken = cachedBookings.find(b => b.seatId === chosenSeatId && b.name !== selectedName);
+                if (taken) {
+                    alert(`ขออภัย ที่นั่ง ${chosenSeatId} เพิ่งถูกจองโดยคุณ ${taken.name} เมื่อสักครู่ กรุณาเลือกที่นั่งใหม่อีกครั้ง`);
+                    selectedSeatInput.value = '';
+                    window.renderSeatingGrid();
+                    window.updateSeatDisplay();
                 } else {
-                    finalSerial = `SC2026-${Math.floor(1000 + Math.random() * 9000)}`;
-                    const newBooking = {
-                        name: attendee.name,
-                        email: attendee.email,
-                        company: attendee.company,
-                        seatId: chosenSeatId,
-                        serial: finalSerial
-                    };
-                    window.saveBooking(newBooking);
+                    runSubmit();
                 }
-
-                // --- Send confirmation email via EmailJS ---
-                if (typeof emailjs !== 'undefined') {
-                    emailjs.send('service_smartcomm', 'template_seat_confirm', {
-                        to_email: attendee.email,
-                        attendee_name: attendee.name,
-                        seat_id: chosenSeatId,
-                        company: attendee.company,
-                        serial: finalSerial,
-                        event_date: '10-11 มิถุนายน 2569',
-                        venue: 'BAFS Grand Hall'
-                    }).then(() => {
-                        console.log('✅ Email sent to:', attendee.email);
-                    }).catch((err) => {
-                        console.warn('⚠️ EmailJS send failed:', err);
-                    });
-                }
-                
-                // Re-render seating grid to permanently register this seat and disable it for others
-                window.renderSeatingGrid();
-                
-                // Update Ticket fields
-                ticketAttendeeName.textContent = attendee.name;
-                ticketSeatNumber.textContent = chosenSeatId;
-                ticketAttendeeEmail.textContent = attendee.email;
-                ticketAttendeeCompany.textContent = attendee.company;
-                ticketSerial.textContent = finalSerial;
-                
-                // Update PI study button state
-                updatePiStudyButton(attendee);
-                
-
-
-                const dispatchText = document.getElementById('dispatchText');
-                if (dispatchText) {
-                    dispatchText.innerHTML = `ระบบได้ส่งข้อมูลบัตรสิทธิ์ที่นั่งอย่างเป็นทางการไปยังอีเมล <strong style="color: var(--theme-primary); text-decoration: underline;">${attendee.email}</strong> เรียบร้อยแล้ว!`;
-                }
-
-                // Transition to Ticket view
-                scanPhase.style.display = 'none';
-                ticketPhase.style.display = 'flex';
-                
-                // Find node on the map representing user's seat to launch animation
-                const finalSeatNode = Array.from(allSeats).find(s => s.getAttribute('data-seat-id') === chosenSeatId);
-                
-                // Trigger digital paper plane / email flight animation!
-                triggerEmailFlightAnimation(finalSeatNode, attendee.email);
-            }
-        }, 100);
+            }).catch(err => {
+                console.error("Error during submit validation:", err);
+                runSubmit(); // Fallback if network fails
+            });
+        } else {
+            runSubmit();
+        }
     });
 
     // High fidelity email flying message animation
@@ -1449,6 +1557,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Dropdown and Admin UI state loading
     if (typeof ATTENDEE_LIST !== 'undefined') {
-        updateAdminUI();
+        fetchLatestBookings().then(() => {
+            updateAdminUI();
+        });
     }
 });
