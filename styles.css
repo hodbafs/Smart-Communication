@@ -4022,15 +4022,15 @@ body.light-mode .seat-node.confirmed {
 }
 
 body.light-mode .form-group input {
-    background: rgba(15, 23, 42, 0.02) !important;
-    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.12) !important;
     color: #0f172a !important;
 }
 
 body.light-mode .form-group input:focus {
-    background: rgba(15, 23, 42, 0.04) !important;
+    background: #ffffff !important;
     border-color: var(--theme-primary) !important;
-    box-shadow: 0 0 10px rgba(var(--theme-primary-rgb), 0.1) !important;
+    box-shadow: 0 0 10px rgba(var(--theme-primary-rgb), 0.15) !important;
 }
 
 body.light-mode .form-group input.readonly-input {
@@ -4402,6 +4402,63 @@ body.light-mode .admin-booking-company {
 }
 body.light-mode .admin-booking-test {
     color: #0284c7 !important; /* darker cyan/blue */
+}
+
+/* --- Light Mode RSVP & Seating Map Readability --- */
+body.light-mode .rsvp-form-container {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.light-mode .seat-live-tracker {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.light-mode .seating-map-wrapper {
+    background: rgba(15, 23, 42, 0.03) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+}
+
+body.light-mode .seating-instruction {
+    color: #475569 !important;
+    background: rgba(15, 23, 42, 0.04) !important;
+    border-left: 3px solid var(--theme-primary) !important;
+}
+
+body.light-mode .seat-label-text {
+    color: #475569 !important;
+}
+
+body.light-mode .seat-node.confirmed .seat-label-text {
+    color: var(--theme-primary) !important;
+    font-weight: 800;
+}
+
+body.light-mode .seat-node.active-user-seat .seat-label-text {
+    color: #ffffff !important;
+}
+
+body.light-mode .legend-dot.available {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px dashed rgba(15, 23, 42, 0.3) !important;
+}
+
+body.light-mode .legend-dot.confirmed {
+    background: rgba(var(--theme-primary-rgb), 0.15) !important;
+    border: 1px solid rgba(var(--theme-primary-rgb), 0.4) !important;
+}
+
+body.light-mode .legend-dot.active-user {
+    background: #d97706 !important;
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
+    box-shadow: 0 0 8px rgba(217, 119, 6, 0.3) !important;
+}
+
+body.light-mode .form-group input.readonly-input {
+    color: #334155 !important;
 }
 
 /* View Transitions animations */
