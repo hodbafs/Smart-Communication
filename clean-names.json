@@ -1,0 +1,205 @@
+﻿[
+    {
+        "ID":  "1",
+        "Name":  "Jaruwan (HZ)",
+        "Email":  "jaruwan@bafs.co.th",
+        "Company":  "HZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "2",
+        "Name":  "Somjai (AZ)",
+        "Email":  "somjai@bafs.co.th",
+        "Company":  "AZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "3",
+        "Name":  "Anusak (AZ)",
+        "Email":  "anusak@bafs.co.th",
+        "Company":  "AZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "4",
+        "Name":  "Sathaporn (AZ)",
+        "Email":  "sathaporn@bafs.co.th",
+        "Company":  "AZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "5",
+        "Name":  "Siraprapa (TARCO)",
+        "Email":  "siraprapa@bafs.co.th",
+        "Company":  "TARCO",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "6",
+        "Name":  "Nut (BPT-PZ)",
+        "Email":  "nut@bafs.co.th",
+        "Company":  "BPT-PZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "7",
+        "Name":  "Narawut (DZ)",
+        "Email":  "narawut@bafs.co.th",
+        "Company":  "DZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "8",
+        "Name":  "Ruengwith (MQ)",
+        "Email":  "ruengwith@bafs.co.th",
+        "Company":  "MQ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "9",
+        "Name":  "Apisak (RZ)",
+        "Email":  "apisak@bafs.co.th",
+        "Company":  "RZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "10",
+        "Name":  "Chayanit (TZ)",
+        "Email":  "chayanit@bafs.co.th",
+        "Company":  "TZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "11",
+        "Name":  "On-anong (TZ)",
+        "Email":  "on-anong@bafs.co.th",
+        "Company":  "TZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "12",
+        "Name":  "Nuthawat (BPT-TZ)",
+        "Email":  "nuthawat@bafs.co.th",
+        "Company":  "BPT-TZ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "13",
+        "Name":  "Pongtep (BC)",
+        "Email":  "pongtep@bafs.co.th",
+        "Company":  "BC",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "14",
+        "Name":  "Sittiphat (MG)",
+        "Email":  "sittiphat@bafs.co.th",
+        "Company":  "MG",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "15",
+        "Name":  "Nuttawan (MQ)",
+        "Email":  "nuttawan@bafs.co.th",
+        "Company":  "MQ",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "16",
+        "Name":  "Kanoknok (BC)",
+        "Email":  "kanoknok@bafs.co.th",
+        "Company":  "BC",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "17",
+        "Name":  "Phatramon (BPT)",
+        "Email":  "phatramon@bafs.co.th",
+        "Company":  "BPT",
+        "Department":  "Talent"
+    },
+    {
+        "ID":  "24",
+        "Name":  "Chaiwut",
+        "Email":  "chaiwut@bafs.co.th",
+        "Company":  "Chaiwut",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "25",
+        "Name":  "Anchisa (วา)",
+        "Email":  "anchisa@bafs.co.th",
+        "Company":  "วา",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "26",
+        "Name":  "Nutcha",
+        "Email":  "nutcha@bafs.co.th",
+        "Company":  "Nutcha",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "27",
+        "Name":  "Game",
+        "Email":  "game@bafs.co.th",
+        "Company":  "Game",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "28",
+        "Name":  "Thaninrada",
+        "Email":  "thaninrada@bafs.co.th",
+        "Company":  "Thaninrada",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "29",
+        "Name":  "Nuttapong",
+        "Email":  "nuttapong@bafs.co.th",
+        "Company":  "Nuttapong",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "30",
+        "Name":  "Montree",
+        "Email":  "montree@bafs.co.th",
+        "Company":  "Montree",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "31",
+        "Name":  "Anuchit",
+        "Email":  "anuchit@bafs.co.th",
+        "Company":  "Anuchit",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "32",
+        "Name":  "Premjit",
+        "Email":  "premjit@bafs.co.th",
+        "Company":  "Premjit",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "33",
+        "Name":  "Damrongsak",
+        "Email":  "damrongsak@bafs.co.th",
+        "Company":  "Damrongsak",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "34",
+        "Name":  "Leela",
+        "Email":  "leela@bafs.co.th",
+        "Company":  "Leela",
+        "Department":  "SC"
+    },
+    {
+        "ID":  "35",
+        "Name":  "Tanawit",
+        "Email":  "tanawit@bafs.co.th",
+        "Company":  "Tanawit",
+        "Department":  "SC"
+    }
+]

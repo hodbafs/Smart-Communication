@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Communication Masterclass - 10-11 June 2026</title>
+    
+    <!-- SEO Optimization -->
+    <meta name="description" content="พัฒนาทักษะการสื่อสารระดับสากล ปรับเปลี่ยนวิธีคิดและจิตวิทยาการโน้มน้าวใจระดับผู้นำในหลักสูตร Smart Communication ณ BAFS Grand Hall 10-11 มิถุนายน 2569">
+    <meta name="keywords" content="Smart Communication, ทักษะการเจรจาต่อรอง, จิตวิทยาการโน้มน้าวใจ, BAFS Grand Hall, Smart Motivation, Leadership Presence">
+    <meta name="author" content="Smart Communication Team">
+    
+    <!-- Premium Google Fonts: Plus Jakarta Sans (English) and Kanit (Thai) - Comfortable, highly readable, and extremely impactful -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Kanit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-ep1">
+
+    <!-- Interactive Ambient Glow & Particles Background -->
+    <div class="ambient-glow" id="ambientGlow"></div>
+    <div class="mesh-grid"></div>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-accent">SMART</span> COMMUNICATION
+        </div>
+        <div class="nav-container">
+            <nav class="nav-links">
+                <a href="#about" class="nav-item">ภาพรวม</a>
+                <a href="#episodes" class="nav-item">ไฮไลต์</a>
+                <a href="#pi-profiles" class="nav-item">วิเคราะห์ PI Profiles</a>
+                <a href="#venue" class="nav-item">จุดนัดพบ</a>
+                <a href="#rsvp" class="cta-button-nav">ลงทะเบียนรับสิทธิ์</a>
+            </nav>
+            <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon icon-moon"></i>
+                <i class="fa-solid fa-sun icon-sun"></i>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="about">
+        <div class="hero-bg" style="background-image: linear-gradient(180deg, rgba(10, 10, 12, 0.4) 0%, rgba(10, 10, 12, 0.95) 100%), url('assets/hero_bg.png');"></div>
+        
+        <div class="hero-content">
+            <div class="badge-container animate-fade-in">
+                <span class="premium-badge"><i class="fa-solid fa-circle-check"></i> GLOBAL EXCLUSIVE MASTERCLASS 2026</span>
+            </div>
+            
+            <h1 class="hero-title animate-slide-up">
+                เปลี่ยนทุก "คำพูด"...<br>
+                <span class="accent-text gradient-glow">ให้เป็น "พลังสะกดความสำเร็จ"</span>
+            </h1>
+            
+            <p class="hero-subtitle animate-slide-up">
+                ยกระดับศิลปะการเจรจา จิตวิทยาการเจาะใจคน และเสน่ห์มาดผู้นำระดับเวิลด์คลาสสู่เวอร์ชันที่ดีที่สุดของคุณ
+                <span class="highlight-line">เพราะคำพูดไม่ใช่แค่การพูดให้จบ... แต่คือกลยุทธ์สูงสุดในการสร้างอิทธิพล ทรงพลังในโอกาส และสยบทุกข้อตกลงอย่างเหนือชั้น</span>
+            </p>
+
+            <!-- Waveform Interactive visual to represent voice power -->
+            <div class="waveform-container animate-fade-in" id="waveform">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+
+            <!-- Event Details Cards -->
+            <div class="event-meta-cards animate-fade-in">
+                <div class="meta-card">
+                    <div class="meta-icon"><i class="fa-regular fa-calendar-days"></i></div>
+                    <div class="meta-text">
+                        <span class="meta-label">วันที่จัดงาน</span>
+                        <span class="meta-value">10 - 11 มิถุนายน 2569</span>
+                    </div>
+                </div>
+                <div class="meta-card">
+                    <div class="meta-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="meta-text">
+                        <span class="meta-label">สถานที่จัดสัมมนา</span>
+                        <span class="meta-value">BAFS Grand Hall</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-container animate-fade-in">
+                <h3 class="countdown-title">เปิดลงทะเบียนเข้าสัมมนาแล้วในขณะนี้</h3>
+                <div class="countdown-timer" id="countdown">
+                    <div class="time-block">
+                        <span class="time-number" id="days">00</span>
+                        <span class="time-label">วัน</span>
+                    </div>
+                    <div class="time-divider">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="hours">00</span>
+                        <span class="time-label">ชั่วโมง</span>
+                    </div>
+                    <div class="time-divider">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="minutes">00</span>
+                        <span class="time-label">นาที</span>
+                    </div>
+                    <div class="time-divider">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="seconds">00</span>
+                        <span class="time-label">วินาที</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights Interactive Showcase Navigator -->
+            <div class="ep-navigator-wrapper" id="episodes">
+                <div class="ep-navigator">
+                    <button class="ep-nav-btn active" data-ep="1">
+                        <span class="ep-nav-num">HIGHLIGHT 1</span>
+                        <span class="ep-nav-title">Smart Handling Power</span>
+                    </button>
+                    <button class="ep-nav-btn" data-ep="2">
+                        <span class="ep-nav-num">HIGHLIGHT 2</span>
+                        <span class="ep-nav-title">Smart Motivation</span>
+                    </button>
+                    <button class="ep-nav-btn" data-ep="3">
+                        <span class="ep-nav-num">HIGHLIGHT 3</span>
+                        <span class="ep-nav-title">Win-Win Negotiation</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Highlights Showcase Container -->
+            <div class="ep-showcase-container">
+                
+                <!-- HIGHLIGHT 1 PANEL -->
+                <div class="ep-panel active" id="ep-panel-1">
+                    <div class="ep-grid">
+                        <div class="ep-visual-container">
+                            <div class="glass-frame tilt-card">
+                                <img src="assets/ep1_transformation.jpg" alt="ไฮไลต์ 1: Smart Handling Power" class="ep-image">
+                            </div>
+                        </div>
+                        <div class="ep-details">
+                            <h3 class="ep-title">ไฮไลต์ 1: Smart Handling Power</h3>
+                            
+                            <div class="ep-promo-card">
+                                <p class="promo-lead">เข้าใจพฤติกรรมผ่านบุคลิกแต่ละคน พร้อมปรับบุคลิกภาพและการสื่อสารให้ชนะใจคนแต่ละรูปแบบ (Self Monitoring)</p>
+                                <p class="promo-text">
+                                    เรียนรู้จิตวิทยาและวิทยาศาสตร์การวิเคราะห์ประเภทพฤติกรรมของบุคคล ถอดรหัสจุดเด่นและข้อพึงระวังในแต่ละสไตล์ พร้อมประยุกต์ใช้ทักษะการสแกนผู้ฟังและการควบคุมการนำเสนอ (Self Monitoring) เพื่อปรับเปลี่ยนน้ำเสียง ภาษากาย และเนื้อหาการเจรจาให้เข้าถึงและชนะใจผู้ฟังได้ครบถ้วนทุกรูปแบบ
+                                </p>
+                                <div class="promo-highlight">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                    <span class="highlight-quote-text">เพราะการเข้าใจและปรับใช้ความต่างของคน... คือกุญแจสำคัญสู่ความสำเร็จในทุกการเจรจา</span>
+                                </div>
+                            </div>
+
+                            <div class="learning-points">
+                                <h4 class="points-title">3 ประเด็นไฮไลต์หลัก:</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>ถอดรหัสบุคลิกภาพ:</strong> ทำความเข้าใจและวิเคราะห์สไตล์พฤติกรรมแต่ละบุคคล</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>ปรับตัวอัจฉริยะ (Self Monitoring):</strong> ปรับแต่งสไตล์การสื่อสารให้สอดรับความชอบคนฟัง</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>ชนะใจทุกปฏิสัมพันธ์:</strong> สร้างแรงโน้มน้าวใจและความเป็นธรรมชาติที่เหนือชั้น</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HIGHLIGHT 2 PANEL -->
+                <div class="ep-panel" id="ep-panel-2">
+                    <div class="ep-grid">
+                        <div class="ep-visual-container">
+                            <div class="glass-frame tilt-card">
+                                <img src="assets/ep2_persuasion.jpg" alt="ไฮไลต์ 2: Smart Motivation" class="ep-image">
+                            </div>
+                        </div>
+                        <div class="ep-details">
+                            <h3 class="ep-title">ไฮไลต์ 2: Smart Motivation</h3>
+                            
+                            <div class="ep-promo-card">
+                                <p class="promo-lead">จิตวิทยาการจูงใจผู้อื่น การอ่านคน และการสร้างวัฒนธรรมองค์กรที่เอื้อต่อแรงขับเคลื่อน (Rapport Building)</p>
+                                <p class="promo-text">
+                                    ก้าวข้ามการสั่งการแบบดั้งเดิม สู่การนำทักษะการสร้างสายสัมพันธ์และความไว้เนื้อเชื่อใจ (Rapport Building) มาใช้อ่านใจบุคคล พร้อมเรียนรู้กลไกเชิงจิตวิทยาในการจุดพลังกระตุ้น ปลูกฝังทัศนคติเชิงบวก และสร้างวัฒนธรรมการมีส่วนร่วมในองค์กร เพื่อขับเคลื่อนประสิทธิภาพการทำงานร่วมกันเป็นทีมให้บรรลุเป้าหมายที่เหนือชั้นไปด้วยกัน
+                                </p>
+                                <div class="promo-highlight">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                    <span class="highlight-quote-text">แรงผลักดันที่ทรงพลังที่สุด... เริ่มต้นจากการสร้างความเข้าใจและความผูกพันที่แท้จริงในใจคน</span>
+                                </div>
+                            </div>
+
+                            <div class="learning-points">
+                                <h4 class="points-title">3 ประเด็นไฮไลต์หลัก:</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>จิตวิทยาการกระตุ้น:</strong> ปลดล็อกแรงจูงใจและไฟในการทำงานของผู้ใต้บังคับบัญชา</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>สร้างความสัมพันธ์ลึกซึ้ง (Rapport):</strong> เทคนิคเชื่อมโยงไอเดียและสร้างความไว้ใจอย่างรวดเร็ว</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>วัฒนธรรมแรงขับเคลื่อน:</strong> พัฒนาสภาพแวดล้อมองค์กรที่ผลักดันเป้าหมายร่วมกัน</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HIGHLIGHT 3 PANEL -->
+                <div class="ep-panel" id="ep-panel-3">
+                    <div class="ep-grid">
+                        <div class="ep-visual-container">
+                            <div class="glass-frame tilt-card">
+                                <img src="assets/ep3_authority.png" alt="ไฮไลต์ 3: Win-Win Negotiation" class="ep-image">
+                            </div>
+                        </div>
+                        <div class="ep-details">
+                            <h3 class="ep-title">ไฮไลต์ 3: Win-Win Negotiation</h3>
+                            
+                            <div class="ep-promo-card">
+                                <p class="promo-lead">กลยุทธ์การเจรจาต่อรองที่มีประสิทธิภาพ การสร้างเงื่อนไขเพื่อความสำเร็จ และเทคนิคการโน้มน้าวใจระดับลึก</p>
+                                <p class="promo-text">
+                                    ยกระดับสู่ศิลปะการเจรจาต่อรองและโน้มน้าวใจขั้นสูง เรียนรู้วิธีการกำหนดและออกแบบเงื่อนไขข้อตกลงเพื่อสร้างผลประโยชน์ร่วมกันทุกฝ่าย (Win-Win Outcome) พร้อมติดอาวุธจิตวิทยาการเจาะใจคนในระดับลึกเพื่อแก้ปัญหาความขัดแย้ง ปรับทัศนคติ และสยบทุกความตึงเครียดให้เปลี่ยนเป็นทางออกทางธุรกิจที่เหนือชั้น
+                                </p>
+                                <div class="promo-highlight">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                    <span class="highlight-quote-text">การเจรจาที่ดีที่สุด... ไม่ใช่การเอาชนะ แต่คือการทำให้ทุกฝ่ายประสบความสำเร็จร่วมกันอย่างมั่นคง</span>
+                                </div>
+                            </div>
+
+                            <div class="learning-points">
+                                <h4 class="points-title">3 ประเด็นไฮไลต์หลัก:</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>กลยุทธ์การต่อรองขั้นสูง:</strong> วิธีควบคุมโครงสร้างการสนทนาและการยื่นข้อเสนออย่างเป็นระบบ</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>สร้างเงื่อนไข Win-Win:</strong> ออกแบบโซลูชันข้อตกลงเพื่อความพึงพอใจสูงสุดของทุกฝ่าย</span></li>
+                                    <li><i class="fa-solid fa-circle-check"></i> <span><strong>จิตวิทยาโน้มน้าวระดับลึก:</strong> เทคนิคเอาชนะแรงต้านและปรับมุมมองเพื่อความร่วมมืออย่างยั่งยืน</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+    <!-- PI Reference Profiles Section -->
+    <section class="pi-section" id="pi-profiles">
+        <div class="pi-container">
+            <div class="pi-header-content">
+                <span class="section-tag"><i class="fa-solid fa-brain"></i> PREDICTIVE INDEX® REFERENCE PROFILES</span>
+                <h2 class="section-title">17 พฤติกรรมแห่งความสำเร็จ (PI Profiles)</h2>
+                <p class="section-desc">
+                    เข้าใจสไตล์ตนเองและสไตล์ผู้อื่นเพื่อ "เปิดใจและประสานงาน" ได้อย่างราบรื่นและทรงประสิทธิภาพก่อนเริ่มชั้นเรียน Smart Communication
+                </p>
+            </div>
+
+            <!-- PI Category Filters -->
+            <div class="pi-filters">
+                <button class="pi-filter-btn active" data-filter="all">ทั้งหมด (17)</button>
+                <button class="pi-filter-btn" data-filter="analytical"><i class="fa-solid fa-brain"></i> Analytical (5)</button>
+                <button class="pi-filter-btn" data-filter="social"><i class="fa-solid fa-people-group"></i> Social (6)</button>
+                <button class="pi-filter-btn" data-filter="stabilizing"><i class="fa-solid fa-shield-halved"></i> Stabilizing (4)</button>
+                <button class="pi-filter-btn" data-filter="persistent"><i class="fa-solid fa-fingerprint"></i> Persistent (2)</button>
+            </div>
+
+            <!-- PI Search Bar -->
+            <div class="pi-search-container">
+                <div class="pi-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="piSearchInput" placeholder="ค้นหาโปรไฟล์ (เช่น Analyzer, Captain, ผู้กว้างขวาง...)" autocomplete="off">
+                    <button id="piSearchClear" class="search-clear-btn" style="display: none;" aria-label="ล้างการค้นหา"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <!-- PI Cards Grid -->
+            <div class="pi-grid-container" id="piGrid">
+                <!-- === Analytical Profiles === -->
+                <div class="pi-card show" data-category="analytical">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/analyzer.png" alt="Analyzer" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Analyzer</h3>
+                                <span class="pi-badge analytical">Analytical Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">เข้มงวด, มาตรฐานสูง, มีระเบียบและมีบุคลิกที่ค่อนข้างสงบเงียบ รวบรวมข้อมูลข้อเท็จจริงก่อนทำการตัดสินใจ</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการเข้าใจภาพรวม<br>
+                                    • ต้องการการคิดวิเคราะห์<br>
+                                    • ต้องการทำงานอย่างรวดเร็ว<br>
+                                    • ต้องการทำงานโดยไม่มีข้อผิดพลาด
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • แน่วแน่<br>
+                                    • เข้มงวด<br>
+                                    • ครุ่นคิด<br>
+                                    • ละเอียดถี่ถ้วน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="analytical">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/controller.png" alt="Controller" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Controller</h3>
+                                <span class="pi-badge analytical">Analytical Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มีระเบียบ, ทำงานด้วยความรวดเร็ว, มีความรับผิดชอบและต้องการข้อเท็จจริง เชี่ยวชาญในงานของตนเอง</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการแก้ปัญหาด้วยตนเอง<br>
+                                    • ต้องการคิดวิเคราะห์<br>
+                                    • ต้องการทำงานอย่างรวดเร็ว<br>
+                                    • ต้องการเข้าใจในกฎเกณฑ์และกฎระเบียบ
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ควบคุมสิ่งต่างๆ ด้วยตนเอง<br>
+                                    • เน้นข้อเท็จจริง<br>
+                                    • ใจเร็ว<br>
+                                    • แม่นยำ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="analytical">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/specialist.png" alt="Specialist" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Specialist</h3>
+                                <span class="pi-badge analytical">Analytical Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">ระมัดระวังและยึดถืออำนาจหน้าที่เป็นสำคัญ, เน้นเรื่องรายละเอียด และพร้อมให้ความร่วมมือ</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการได้รับการสนับสนุน<br>
+                                    • ต้องการโอกาสในการทำงานกับข้อเท็จจริง<br>
+                                    • ต้องการทำงานอย่างรวดเร็วกว่ามาตรฐาน<br>
+                                    • ต้องการเข้าใจในกฎเกณฑ์และกฎระเบียบ
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ปฏิบัติตามกฎและนโยบาย<br>
+                                    • เน้นข้อเท็จจริง<br>
+                                    • รวดเร็ว<br>
+                                    • แม่นยำ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="analytical">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/strategist.png" alt="Strategist" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Strategist</h3>
+                                <span class="pi-badge analytical">Analytical Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มองภาพใหญ่ ให้ความสำคัญกับผลลัพธ์, จริงจัง และชอบติดตามและควบคุมงานต่างๆ อย่างใกล้ชิด</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการเข้าใจภาพรวม<br>
+                                    • ต้องการการคิดวิเคราะห์<br>
+                                    • ต้องการความหลากหลายและความยืดหยุ่น<br>
+                                    • ต้องการเวลาในการพัฒนาศักยภาพ
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • อิสระ<br>
+                                    • ไตร่ตรอง<br>
+                                    • เข้มงวด<br>
+                                    • มีระเบียบ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="analytical">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/venturer.png" alt="Venturer" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Venturer</h3>
+                                <span class="pi-badge analytical">Analytical Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">จะมีแรงผลักดันในตนเอง มุ่งเน้นที่เป้าหมาย, คิดนอกกรอบ ให้ความสำคัญกับเป้าหมายและเป็นนักคิดริเริ่ม</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการอิสระ<br>
+                                    • ต้องการโอกาสในการคิดไตร่ตรอง<br>
+                                    • ต้องการความหลากหลาย<br>
+                                    • ต้องการอิสระจากแบบแผนหรือกฎระเบียบ
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • สั่งการ<br>
+                                    • คิดวิเคราะห์<br>
+                                    • มีแรงผลักดันในตนเอง<br>
+                                    • คิดนอกกรอบ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === Social Profiles === -->
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/altruist.png" alt="Altruist" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Altruist</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">เข้ากับผู้อื่นได้ดีและชอบให้ความร่วมมือ, เที่ยงตรง, สามัคคีและมักจะเป็นคนแรกที่เสนอตัวเมื่อผู้อื่นต้องการ</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความสามัคคี<br>
+                                    • ต้องการปฏิสัมพันธ์และร่วมมือกับผู้อื่น<br>
+                                    • ต้องการการจัดการงานที่มีความหลากหลาย<br>
+                                    • ต้องการทราบความคาดหวังที่ชัดเจน
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ให้ความร่วมมือ<br>
+                                    • ชอบเข้าสังคม<br>
+                                    • รวดเร็ว<br>
+                                    • ทำงานเป็นระบบ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/captain.png" alt="Captain" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Captain</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">เป็นนักแก้ปัญหา ชอบการเปลี่ยนแปลงและความคิดสร้างสรรค์ใหม่ๆ ในขณะที่ต้องการควบคุมภาพรวม</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการอิสระ<br>
+                                    • ต้องการสร้างสัมพันธ์กับผู้อื่น<br>
+                                    • ต้องการความหลากหลายและเปลี่ยนแปลง<br>
+                                    • ต้องการความยืดหยุ่น
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ท้าทาย, ชอบแข่งขัน<br>
+                                    • กระตือรือร้น<br>
+                                    • คิดนอกกรอบ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/collaborator.png" alt="Collaborator" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Collaborator</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">เป็นมิตร, เข้าอกเข้าใจ, มีความกระตือรือร้น, เป็นเพื่อนร่วมทีมที่อดทน มักทำให้ผู้อื่นพึงพอใจและสบายใจ</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความเป็นมิตร<br>
+                                    • ต้องการทำงานร่วมกับผู้อื่น<br>
+                                    • ต้องการทีมที่คอยสนับสนุน<br>
+                                    • ต้องการอิสระในการแสดงความคิดเห็น
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ให้ความร่วมมือ<br>
+                                    • เห็นอกเห็นใจ<br>
+                                    • อดทน<br>
+                                    • สบายๆ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/maverick.png" alt="Maverick" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Maverick</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มีความคิดสร้างสรรค์, คิดนอกกรอบ, โน้มน้าวใจ, กล้าคิด กล้าทำและไม่ย่อท้อต่อความล้มเหลว</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความท้าทาย<br>
+                                    • ต้องการโอกาสในการโน้มน้าว ชักจูงผู้อื่น<br>
+                                    • ต้องการความหลากหลาย<br>
+                                    • ต้องการเป็นอิสระจากการถูกควบคุมหรือกฎเกณฑ์
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • กล้าเสี่ยง<br>
+                                    • กระตือรือร้น<br>
+                                    • มีแรงผลักดันในตนเอง<br>
+                                    • อดทนต่อความไม่แน่นอน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/persuader.png" alt="Persuader" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Persuader</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">รับความเสี่ยงได้, เปิดเผย, สร้างความแตกต่าง, สร้างแรงจูงใจให้กับทีมและต้องการเป็นที่ยอมรับในสังคม</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการอิสระ<br>
+                                    • ต้องการโอกาสในการปฏิสัมพันธ์กับผู้คน<br>
+                                    • ต้องการความหลากหลายและเปลี่ยนแปลง<br>
+                                    • ต้องการอิสระจากกรอบการทำงานที่เข้มงวด
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • มีความมั่นใจในตนเอง<br>
+                                    • พูดจาโน้มน้าว<br>
+                                    • รวดเร็ว<br>
+                                    • เป็นกันเอง
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="social">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/promoter.png" alt="Promoter" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Promoter</h3>
+                                <span class="pi-badge social">Social Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">สบายๆ, เปิดเผย, ยืดหยุ่น, โน้มน้าวใจและมีชั้นเชิง, ชอบพูดคุยและสร้างความรู้จักและให้การสนับสนุน</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความปรองดอง<br>
+                                    • ต้องการการยอมรับในสังคม<br>
+                                    • ต้องการทีมที่คอยสนับสนุน<br>
+                                    • ต้องการอิสระจากกรอบการทำงาน
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ให้ความร่วมมือ<br>
+                                    • ชอบเข้าสังคม<br>
+                                    • อดทน<br>
+                                    • ยืดหยุ่น
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === Stabilizing Profiles === -->
+                <div class="pi-card show" data-category="stabilizing">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/adapter.png" alt="Adapter" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Adapter</h3>
+                                <span class="pi-badge stabilizing">Stabilizing Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">เป็นเสมือนคนกลางที่คอยเชื่อมสิ่งต่างๆ, สบายๆ และสามารถปรับตัวเข้ากับสถานการณ์ต่างๆ ได้เร็ว</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    มีแรงผลักดันทั้งสี่ค่าอยู่ในระดับที่ใกล้เคียงกัน จึงไม่มีแรงผลักดันที่ชัดเจนที่จะกระตุ้นความต้องการหรือพฤติกรรมของพวกเขา อาจเป็นคนที่อ่านได้ยาก เพราะไม่มีแรงผลักดันที่ทำให้เกิดพฤติกรรมที่ชัดเจน ซึ่งความยืดหยุ่นถือเป็นจุดเด่นของคนกลุ่มนี้
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • พฤติกรรมมีความยืดหยุ่นมาก
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="stabilizing">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/artisan.png" alt="Artisan" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Artisan</h3>
+                                <span class="pi-badge stabilizing">Stabilizing Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">ช่วยเหลือผู้อื่นและชอบวิเคราะห์ ในขณะเดียวกันก็ผลิตงานที่มีความถูกต้องและแม่นยำสูง</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการเข้าใจสิ่งต่างๆ<br>
+                                    • ต้องการเวลาในการคิดวิเคราะห์<br>
+                                    • ต้องการสภาพแวดล้อมการทำงานที่มั่นคง<br>
+                                    • ต้องการความรู้ที่เกี่ยวข้องกับตำแหน่งงาน
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • รับฟังผู้อื่น<br>
+                                    • คิดวิเคราะห์<br>
+                                    • รอบคอบ, สุขุม<br>
+                                    • แม่นยำ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="stabilizing">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/guardian.png" alt="Guardian" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Guardian</h3>
+                                <span class="pi-badge stabilizing">Stabilizing Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">ให้ความช่วยเหลือผู้อื่น, ชอบงานที่ต้องลงรายละเอียดและใช้ทักษะ, รอบคอบ, มั่นคงและเชื่อถือได้</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความแน่ใจ<br>
+                                    • ต้องการเวลาในการสร้างความเชื่อใจผู้อื่น<br>
+                                    • ต้องการลำดับความสำคัญที่ชัดเจน<br>
+                                    • ต้องการทำงานอย่างไม่ผิดพลาด
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ช่วยเหลือเกื้อกูล<br>
+                                    • มีส่วนร่วมกับการทำงาน<br>
+                                    • มั่นคง<br>
+                                    • แข็งขัน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="stabilizing">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/operator.png" alt="Operator" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Operator</h3>
+                                <span class="pi-badge stabilizing">Stabilizing Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มีความอดทน, ยุติธรรม, เป็นเพื่อนร่วมทีมที่พร้อมให้ความร่วมมือและสามารถรับมือกับสถานการณ์ต่างๆ ได้</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการความแน่ใจ<br>
+                                    • ต้องการทำงานกับข้อเท็จจริง<br>
+                                    • ต้องการลำดับความสำคัญที่ชัดเจน<br>
+                                    • ต้องการเข้าใจในกฎระเบียบและแบบแผน
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ให้ความร่วมมือ<br>
+                                    • จริงจัง<br>
+                                    • มั่นคง<br>
+                                    • ละเอียดถี่ถ้วน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === Persistent Profiles === -->
+                <div class="pi-card show" data-category="persistent">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/individualist.png" alt="Individualist" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Individualist</h3>
+                                <span class="pi-badge persistent">Persistent Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มีความเป็นตัวของตัวเองสูงและมั่นใจในคิด of ตน และมุ่งเน้นในเรื่องของผลลัพธ์เป็นหลัก</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการอิสระ<br>
+                                    • ต้องการทำงานโดยใช้ข้อเท็จจริง<br>
+                                    • ต้องการลำดับความสำคัญที่ชัดเจน<br>
+                                    • ต้องการความยืดหยุ่น
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • มั่นใจในตนเอง<br>
+                                    • คิดวิเคราะห์<br>
+                                    • ตามแบบแผน<br>
+                                    • ไม่ตามกฎระเบียบ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pi-card show" data-category="persistent">
+                    <div class="pi-card-inner">
+                        <div class="pi-card-header">
+                            <div class="pi-icon-wrap"><img src="assets/pi-profiles/scholar.png" alt="Scholar" class="pi-profile-icon-img"></div>
+                            <div class="pi-title-wrap">
+                                <h3 class="pi-name">Scholar</h3>
+                                <span class="pi-badge persistent">Persistent Profile</span>
+                            </div>
+                        </div>
+                        <div class="pi-card-body">
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                                <p class="pi-detail-text">มีความแม่นยำ, สื่อสารน้อย, มีจินตนาการและความต้องการทางด้านเทคนิคที่สูง ชอบที่จะทำงานด้วยตนเอง</p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ</h4>
+                                <p class="pi-detail-text">
+                                    • ต้องการอิสระ<br>
+                                    • ต้องการเวลาพินิจ พิเคราะห์<br>
+                                    • ต้องการสภาพแวดล้อมการทำงานที่มั่นคง<br>
+                                    • ต้องการทำงานอย่างไม่ผิดพลาด
+                                </p>
+                            </div>
+                            <div class="pi-detail-item">
+                                <h4 class="pi-detail-title"><i class="fa-solid fa-gears"></i> พฤติกรรม</h4>
+                                <p class="pi-detail-text">
+                                    • ควบคุมสิ่งต่างๆ ด้วยตนเอง<br>
+                                    • มีพื้นที่ส่วนตัว<br>
+                                    • รอบคอบ<br>
+                                    • ครุ่นคิด
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue and Details Section -->
+    <section class="venue-section" id="venue">
+        <div class="venue-grid">
+            <div class="venue-info">
+                <span class="section-tag">VENUE & TIME</span>
+                <h2 class="section-title">BAFS GRAND HALL</h2>
+                <p class="venue-desc">
+                    สัมผัสประสบการณ์ในหอประชุมขนาดใหญ่ระดับเอ็กซ์คลูซีฟ ซึ่งเพียบพร้อมด้วยเทคโนโลยีระบบแสง สี เสียง 
+                    และสภาพแวดล้อมการจัดวางโต๊ะทำงานที่ได้รับการออกแบบมาเพื่อเสริมสร้างทักษะการสื่อสารในทุกมิติ
+                </p>
+                <div class="venue-details-list">
+                    <div class="venue-item">
+                        <span class="venue-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <span class="venue-text">
+                            <a href="https://maps.app.goo.gl/ZHjcHfqTG7JqqaTG6" target="_blank" class="location-text-link">
+                                BAFS Grand Hall (อาคารบริการน้ำมันอากาศยาน ถนนวิภาวดีรังสิต กรุงเทพมหานคร) <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8rem; margin-left: 4px; opacity: 0.7;"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="venue-item">
+                        <span class="venue-icon"><i class="fa-regular fa-clock"></i></span>
+                        <span class="venue-text">10 - 11 มิถุนายน 2569 | เวลา 09:00 - 16:30 น.</span>
+                    </div>
+                    <div class="venue-item">
+                        <span class="venue-icon"><i class="fa-solid fa-circle-info"></i></span>
+                        <span class="venue-text">การแต่งกายสัมมนา: สไตล์ Smart Casual สากลเพื่อเสริมสร้างบุคลิกภาพ</span>
+                    </div>
+                </div>
+                <a href="https://maps.app.goo.gl/ZHjcHfqTG7JqqaTG6" target="_blank" class="btn btn-maps btn-glow">
+                    <span>เปิดแผนที่ Google Maps</span> <i class="fa-solid fa-map-location-dot"></i>
+                </a>
+            </div>
+            <div class="venue-visual">
+                <a href="https://maps.app.goo.gl/ZHjcHfqTG7JqqaTG6" target="_blank" class="glass-map-link">
+                    <div class="glass-map">
+                        <div class="map-glow"></div>
+                        <div class="mock-map">
+                            <img src="assets/venue_map.png" alt="BAFS Grand Hall Location Map" class="map-image-bg">
+                            <div class="map-pin">
+                                <div class="pin-pulse"></div>
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="map-grid-lines"></div>
+                            <div class="map-card">
+                                <span class="map-title">BAFS Grand Hall</span>
+                                <span class="map-sub"><i class="fa-solid fa-map-location-dot"></i> เปิดแผนที่ใน Google Maps</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seat Booking and Registration Section -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="rsvp-grid">
+            <div class="rsvp-header">
+                <span class="section-tag">INVITATION STATUS</span>
+                <h2 class="section-title">ระบบตรวจสอบสิทธิ์และรายชื่อเข้าร่วมงาน</h2>
+                <p class="rsvp-sub">
+                    โปรแกรมพิเศษระดับเวิลด์คลาสนี้จำกัดเฉพาะผู้ได้รับเชิญพิเศษเท่านั้น 
+                    กรุณาเลือกรายชื่อของคุณในดรอปดาวน์เพื่อตรวจสอบความถูกต้องของสิทธิ์เข้าร่วม ณ BAFS Grand Hall
+                </p>
+                
+                <div class="seat-live-tracker">
+                    <div class="seating-map-wrapper">
+                        <div class="stage-podium">
+                            <span class="stage-label">STAGE / BAFS Grand Hall Podium</span>
+                        </div>
+                        <div class="seating-grid" id="seatingGrid">
+                            <!-- 100 Seating Nodes generated dynamically in app.js -->
+                        </div>
+                    </div>
+                    
+                    <div class="tracker-info">
+                        <div class="status-legend">
+                            <div class="legend-item"><span class="legend-dot available"></span> ที่นั่งว่าง (คลิกเพื่อจอง)</div>
+                            <div class="legend-item"><span class="legend-dot confirmed"></span> ถูกจองโดยผู้อื่นแล้ว</div>
+                            <div class="legend-item"><span class="legend-dot active-user"></span> ที่นั่งที่คุณเลือก</div>
+                        </div>
+                        <p class="urgent-text"><i class="fa-solid fa-chair"></i> เลือกที่นั่งที่คุณชอบที่สุดในการเรียนรู้</p>
+                        <p class="total-text">การจัดสรรที่นั่ง BAFS Grand Hall: <strong class="glow-value" id="dynamicSeatingCount">จองแล้ว 0/31 ที่นั่ง</strong></p>
+                        <div class="seating-instruction">
+                            <i class="fa-solid fa-circle-info"></i> ขั้นตอน: 1. เลือกรายชื่อของคุณในดร็อปดาวน์ 2. คลิกตำแหน่งที่นั่งว่าง (เส้นประ) บนแผนผังเพื่อเลือกที่นั่ง 3. กดปุ่มยืนยันสิทธิ์
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rsvp-form-container">
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name"><i class="fa-regular fa-user"></i> ตรวจสอบรายชื่อของคุณ (รายชื่อผู้ได้รับเชิญพิเศษ)</label>
+                            <select id="name" required class="select-dropdown">
+                                <option value="" disabled selected>--- กรุณาเลือกรายชื่อเพื่อเช็กสิทธิ์ ---</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email"><i class="fa-regular fa-envelope"></i> อีเมลบริษัท (ระบบจะกรอกข้อมูลอัตโนมัติ)</label>
+                            <input type="email" id="email" required readonly class="readonly-input" placeholder="กรุณาเลือกรายชื่อเพื่อแสดงอีเมล">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department"><i class="fa-regular fa-building"></i> บริษัท / หน่วยงานสังกัด (ระบบจะกรอกข้อมูลอัตโนมัติ)</label>
+                            <input type="text" id="department" required readonly class="readonly-input" placeholder="กรุณาเลือกรายชื่อเพื่อแสดงหน่วยงาน">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="selectedSeatInput"><i class="fa-solid fa-chair"></i> ตำแหน่งที่นั่งที่เลือก (คลิกเลือกที่นั่งบนแผนผังด้านซ้าย)</label>
+                            <input type="text" id="selectedSeatInput" required readonly class="readonly-input" placeholder="กรุณาคลิกเลือกที่นั่งว่าง (เส้นประ) บนแผนผัง" style="color: var(--theme-primary) !important; font-weight: bold; border-color: rgba(var(--theme-primary-rgb), 0.3) !important;">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn btn-glow" id="submitBtn">
+                        <span>ตรวจสอบและยืนยันสิทธิ์เข้าร่วมงาน</span> <i class="fa-solid fa-circle-check"></i>
+                    </button>
+                    <button type="button" class="submit-btn btn-glow" id="viewTicketBtn" style="display: none; background: linear-gradient(135deg, #00e5ff 0%, #00838f 100%); color: #000000;">
+                        <span>ดูและดาวน์โหลดบัตรที่นั่ง</span> <i class="fa-solid fa-ticket"></i>
+                    </button>
+                </form>
+
+                <div class="seating-pi-link" style="margin-top: 20px;">
+                    <a href="#pi-profiles" class="btn btn-secondary btn-glow" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; border-radius: 12px; padding: 12px 20px; font-size: 0.9rem; font-weight: 700; text-decoration: none;">
+                        <i class="fa-solid fa-brain text-glow"></i> <span>เรียนรู้และวิเคราะห์ 17 PI Profiles ก่อนเริ่มคลาส</span>
+                    </a>
+                </div>
+
+                <!-- Admin Login Section -->
+                <div class="admin-login-container">
+                    <div id="adminLoginTrigger">
+                        <button type="button" id="adminLoginBtn" class="btn btn-secondary btn-glow">
+                            <i class="fa-solid fa-shield-halved"></i> <span>เข้าสู่ระบบผู้ดูแลระบบ (Admin Login)</span>
+                        </button>
+                    </div>
+                    <div id="adminPasswordInputArea" style="display: none; justify-content: center; align-items: center; gap: 10px; max-width: 400px; margin: 0 auto;">
+                        <input type="password" id="adminPassword" placeholder="กรอกรหัสผ่าน Admin">
+                        <button type="button" id="adminSubmitPasswordBtn" class="btn btn-primary btn-glow" style="font-size: 0.85rem; padding: 10px 16px; border-radius: 10px; font-weight: 600;">ตกลง</button>
+                        <button type="button" id="adminCancelPasswordBtn" class="btn btn-secondary">ยกเลิก</button>
+                    </div>
+                </div>
+
+                <!-- Admin Control Panel (Visible only to Admin/Testers) -->
+                <div class="admin-control-panel" id="adminControlPanel" style="display: none; margin-top: 25px;">
+                    <div class="admin-header">
+                        <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i> SYSTEM ADMINISTRATOR MODE</span>
+                    </div>
+                    <h4 class="admin-title">ควบคุมและทดสอบระบบที่นั่ง</h4>
+                    <p class="admin-desc">ตรวจพบสิทธิ์ผู้ทดสอบระบบ: ท่านสามารถเลือกที่นั่งใดๆ ก็ได้เพื่อทดสอบกระบวนการทั้งหมด และทำการเคลียร์ข้อมูลเพื่อจำลองซ้ำได้ตลอดเวลา</p>
+                    <div class="admin-actions">
+                        <button type="button" id="adminResetCurrentUserBtn" class="btn btn-admin-action" disabled>
+                            <i class="fa-regular fa-trash-can"></i> ล้างการจองของชื่อนี้
+                        </button>
+                        <button type="button" id="adminResetAllBtn" class="btn btn-admin-danger">
+                            <i class="fa-solid fa-triangle-exclamation"></i> ล้างแผนผังที่นั่งทั้งหมด
+                        </button>
+                    </div>
+                    
+                    <div class="admin-bookings-list">
+                        <h5 class="admin-bookings-title"><i class="fa-solid fa-list-check"></i> รายการจองที่นั่งทั้งหมด (<span id="adminBookingCount">0</span> ที่นั่ง)</h5>
+                        <div id="adminBookingsContainer">
+                            <!-- Bookings list will be rendered here dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Success State Overlay (Holographic Scanner & Digital Ticket) -->
+                <div class="success-overlay" id="successOverlay">
+                    <!-- 1. Holographic Scanning Phase -->
+                    <div class="success-content" id="scanPhase">
+                        <div class="hologram-scanner">
+                            <div class="scanner-laser"></div>
+                            <div class="scanner-circle">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                        </div>
+                        <h3>กำลังวิเคราะห์ข้อมูลผู้เข้าอบรม</h3>
+                        <p class="warning-alert-text">
+                            ระบบกำลังเข้ารหัส และประมวลผลจัดสรรที่นั่งแบบสุ่ม (Random Seating Allocation) ณ BAFS Grand Hall...
+                        </p>
+                        <div class="scan-progress-bar">
+                            <div class="scan-progress-fill" id="scanProgressFill"></div>
+                            <span class="scan-percent" id="scanPercent">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Final Boarding Pass Ticket Phase (Hidden initially) -->
+                    <div class="success-content" id="ticketPhase" style="display: none;">
+                        <div class="success-icon ticket-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <h3 class="success-title-main">ลงทะเบียนและสุ่มเลือกที่นั่งเสร็จสมบูรณ์!</h3>
+                        <p class="success-subtitle-main">ข้อความระบุที่นั่งได้รับการส่งไปยังอีเมลของท่านแล้ว</p>
+                        
+                        <!-- Premium Digital Boarding Pass -->
+                        <div class="boarding-ticket" id="downloadableTicket">
+                            <div class="ticket-header">
+                                <div class="ticket-brand">SMART COMMUNICATION</div>
+                                <div class="ticket-class">VIP PASS</div>
+                            </div>
+                            
+                            <div class="ticket-body">
+                                <div class="ticket-row">
+                                    <div class="ticket-col">
+                                        <span class="ticket-lbl">ผู้เข้าอบรม (ATTENDEE)</span>
+                                        <span class="ticket-val" id="ticketAttendeeName">-</span>
+                                    </div>
+                                    <div class="ticket-col seat-badge-col">
+                                        <span class="ticket-lbl">ตำแหน่งที่นั่ง (SEAT)</span>
+                                        <span class="ticket-val seat-glow-number" id="ticketSeatNumber">-</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ticket-row">
+                                    <div class="ticket-col">
+                                        <span class="ticket-lbl">อีเมล (EMAIL)</span>
+                                        <span class="ticket-val" id="ticketAttendeeEmail">-</span>
+                                    </div>
+                                    <div class="ticket-col">
+                                        <span class="ticket-lbl">บริษัท / สังกัด</span>
+                                        <span class="ticket-val" id="ticketAttendeeCompany">-</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ticket-row ticket-row-footer">
+                                    <div class="ticket-col">
+                                        <span class="ticket-lbl">สถานที่ (VENUE)</span>
+                                        <span class="ticket-val" style="font-size: 0.75rem;">BAFS Grand Hall</span>
+                                    </div>
+                                    <div class="ticket-col">
+                                        <span class="ticket-lbl">วันที่ (DATE)</span>
+                                        <span class="ticket-val" style="font-size: 0.75rem;">10-11 มิถุนายน 2569</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ticket-divider">
+                                <div class="perforation-left"></div>
+                                <div class="perforation-line"></div>
+                                <div class="perforation-right"></div>
+                            </div>
+                            
+                            <div class="ticket-footer">
+                                <div class="ticket-barcode">
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                    <div class="barcode-line"></div>
+                                </div>
+                                <span class="ticket-serial">ID: <span id="ticketSerial">SC2026-XXXX</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Email Transmission Notification -->
+                        <div class="email-dispatch-status">
+                            <span class="dispatch-pulse"></span>
+                            <span class="dispatch-text" id="dispatchText">ระบบได้จัดส่งข้อมูลที่นั่งไปยังกล่องข้อความของผู้เข้าอบรมเรียบร้อยแล้ว</span>
+                        </div>
+
+                        <!-- PI Profile Study Button Container -->
+                        <div class="pi-study-row" id="studyPiBtnContainer" style="display: none;">
+                            <button type="button" class="btn btn-pi-study" id="studyPiBtn">
+                                <i class="fa-solid fa-brain"></i> <span id="studyPiBtnText">ศึกษา PI Profile ของคุณ</span>
+                            </button>
+                        </div>
+
+
+                        <div class="ticket-actions-row">
+                            <button type="button" class="btn btn-secondary btn-glow" id="downloadTicketBtn">
+                                <i class="fa-solid fa-download"></i> <span>ดาวน์โหลดบัตรที่นั่ง</span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-glow" onclick="closeSuccess()">ตกลง</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="logo-accent">SMART</span> COMMUNICATION
+                <p class="brand-desc">โปรแกรมยกระดับศักยภาพ ทักษะทางจิตวิทยา และการปฏิสัมพันธ์ในองค์กรสู่ระดับสากล</p>
+            </div>
+            <div class="footer-links">
+                <h4>หัวข้อไฮไลต์</h4>
+                <ul>
+                    <li><a href="#episodes">ไฮไลต์ 1: Smart Handling Power</a></li>
+                    <li><a href="#episodes">ไฮไลต์ 2: Smart Motivation</a></li>
+                    <li><a href="#episodes">ไฮไลต์ 3: Win-Win Negotiation</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>ติดต่อทีม HOD</h4>
+                <p><i class="fa-regular fa-envelope"></i> <a href="mailto:hod@bafs.co.th" style="color: inherit; text-decoration: none;">hod@bafs.co.th</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:028348900" style="color: inherit; text-decoration: none;">02-834-8900</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Smart Communication Masterclass. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button with Tooltip -->
+    <button class="back-to-top" id="backToTop" aria-label="กลับสู่ด้านบน">
+        <i class="fa-solid fa-chevron-up"></i>
+        <span class="tooltip-text">กลับด้านบน</span>
+    </button>
+
+    <script type="text/javascript" src="email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS — Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        // Sign up at https://www.emailjs.com/ to get your keys
+        (function() {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init('YOUR_PUBLIC_KEY');
+            }
+        })();
+    </script>
+    <!-- PI Details Modal -->
+    <div id="piModal" class="pi-modal">
+        <div class="pi-modal-backdrop"></div>
+        <div class="pi-modal-content">
+            <button class="pi-modal-close" id="closePiModal" aria-label="ปิดรายละเอียด"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="pi-modal-body">
+                <!-- Header -->
+                <div class="pi-modal-header">
+                    <div class="pi-modal-icon-wrap" id="piModalIconWrap"></div>
+                    <div class="pi-modal-title-wrap">
+                        <h3 id="piModalName" class="pi-modal-name">Analyzer</h3>
+                        <span id="piModalBadge" class="pi-modal-badge analytical">Analytical Profile</span>
+                    </div>
+                </div>
+                
+                <div class="pi-modal-grid">
+                    <!-- Column 1: ลักษณะสำคัญ -->
+                    <div class="pi-modal-col description-col">
+                        <div class="pi-modal-section-card">
+                            <h4 class="pi-modal-section-title"><i class="fa-solid fa-circle-info"></i> ลักษณะสำคัญ</h4>
+                            <p id="piModalDesc" class="pi-modal-desc-text">เข้มงวด, มาตรฐานสูง, มีระเบียบ...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2: ความต้องการ & พฤติกรรม -->
+                    <div class="pi-modal-col details-col">
+                        <div class="pi-modal-section-card">
+                            <h4 class="pi-modal-section-title"><i class="fa-solid fa-clipboard-question"></i> ความต้องการ (Needs)</h4>
+                            <ul id="piModalNeeds" class="pi-modal-list"></ul>
+                        </div>
+                        <div class="pi-modal-section-card">
+                            <h4 class="pi-modal-section-title"><i class="fa-solid fa-gears"></i> พฤติกรรม (Behaviors)</h4>
+                            <ul id="piModalBehaviors" class="pi-modal-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Navigation & Action -->
+            <div class="pi-modal-footer">
+                <button class="pi-modal-nav-btn prev" id="piModalPrev"><i class="fa-solid fa-chevron-left"></i> โปรไฟล์ก่อนหน้า</button>
+                <div class="pi-modal-nav-indicator" id="piModalIndicator">1 / 17</div>
+                <button class="pi-modal-nav-btn next" id="piModalNext">โปรไฟล์ถัดไป <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="html2canvas.min.js"></script>
+    <script src="names-db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
